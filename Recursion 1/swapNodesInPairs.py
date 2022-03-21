@@ -6,8 +6,10 @@
 #         self.next = next
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if(head is None or head.next is None):
+        if head is None:
             return
+        elif head.next is None:
+            return head
         else:
             left_node: ListNode = head
             right_node: ListNode = head.next
