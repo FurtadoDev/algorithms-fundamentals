@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/search-a-2d-matrix-ii/
+# Algorithm inspired by kd-tree
 class Solution(object):
     def kd_search_rec(self, matrix, target, splitAlongVertical, isMatrixValid):
         
@@ -25,7 +26,8 @@ class Solution(object):
             leftMatrix = [sublist[0:mid_col_idx] for sublist in matrix]
             rightMatrix = [sublist[mid_col_idx:num_cols] for sublist in matrix]
             return self.kd_search_rec(leftMatrix,target,False,isLeftValid) or self.kd_search_rec(rightMatrix,target,False,isRightValid)
-        if (splitAlongVertical == False and num_rows > 1) or (splitAlongVertical == True and num_cols==1):
+        else:
+        # if (splitAlongVertical == False and num_rows > 1) or (splitAlongVertical == True and num_cols==1):
             if target >= matrix[0][0] and target <= matrix[mid_row_idx-1][num_cols-1]:
                 isTopValid = True
             if target >= matrix[mid_row_idx][0] and target <= matrix[num_rows-1][num_cols-1]:
